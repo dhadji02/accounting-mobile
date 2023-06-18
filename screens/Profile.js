@@ -24,29 +24,29 @@ const Profile = ({ navigation }) => {
       <View style={styles.contentContainer}>
         <Text style={styles.textBox}>Account</Text>
         <View style={styles.whiteBox}>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='person' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Profile Settings</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='security' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Security and Privacy</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='settings' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Application Settings</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='info' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>About Oneprop</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.whiteBox}>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='description' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Documents</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={logOut} style={styles.logoutButton}>
+          <TouchableOpacity style={styles.logoutButton}>
             <MaterialIcons name='gavel' size={30} color='#2D64E2' style={styles.logoutIcon} />
             <Text style={styles.logoutText}>Terms and Conditions</Text>
           </TouchableOpacity>
