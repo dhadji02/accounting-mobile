@@ -5,6 +5,7 @@ import Login from './screens/Login';
 import Home from './screens/Home';
 import Splash from './screens/Splash';
 import Profile from './screens/Profile';
+import Pair from './screens/Pair';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+        <Stack.Screen name="Pair" component={Pair} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

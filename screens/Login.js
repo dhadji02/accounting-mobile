@@ -1,9 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 const Login = () => {
@@ -29,7 +27,7 @@ const Login = () => {
       console.log('Invalid credentials');
     }
   };
-  
+
   if (!loaded) {
     return null;
   }
@@ -37,18 +35,19 @@ const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require('../assets/onepre.png')}
+        source={require('../assets/oneprop-logo.png')}
         style={styles.logo}
+        resizeMode="contain"
       />
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.title}>Welcome!</Text>
         <View style={styles.inputContainer}>
-          <MaterialIcons name='alternate-email' size={20} color="#666" style={styles.inputIcon} />
-          <TextInput style={styles.input} placeholder='Email' onChangeText={text => setEmail(text)} keyboardType='email-address' />
+          <MaterialIcons name='person-outline' size={20} color="#666" style={styles.inputIcon} />
+          <TextInput style={styles.input} placeholder='Email' onChangeText={text => setEmail(text)} keyboardType='email-address' autoCapitalize='none' />
         </View>
         <View style={styles.inputContainer}>
-          <Ionicons name='ios-lock-closed-outline' size={20} color="#666" style={styles.inputIcon} />
-          <TextInput style={styles.input} placeholder='Password' onChangeText={text => setPassword(text)} secureTextEntry={true} />
+          <MaterialIcons name='lock-outline' size={20} color="#666" style={styles.inputIcon} />
+          <TextInput style={styles.input} placeholder='Password' onChangeText={text => setPassword(text)} secureTextEntry={true} autoCapitalize='none' />
           <TouchableOpacity onPress={() => {}}>
             <Text style={styles.forgotText}>Forgot?</Text>
           </TouchableOpacity>
@@ -78,7 +77,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 100,
-    marginBottom: 20,
     alignSelf: 'center',
   },
   content: {
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     backgroundColor: '#EDEFF2',
     borderRadius: 10,
-    width: 300, // Adjust the width as needed
+    width: 300, 
     alignItems: 'center',
   },
   inputIcon: {
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
     textAlign: 'center',
-    width: 300, // Adjust the width as needed
+    width: 300, 
     alignItems: 'center',
   },
   loginButtonText: {

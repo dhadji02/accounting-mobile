@@ -1,67 +1,70 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Home = () => {
   const navigation = useNavigation();
-
-  const handleLogin = () => {
-    // Perform login logic
-    // Assuming successful login, navigate to the "Login" screen
+  const navigate = () => {
     navigation.navigate('Profile');
   };
 
-  const handleViewTransactions = () => {
-    // Navigate to the "Transactions" screen
-    navigation.navigate('Login');
+  const navigate1 = () => {
+    navigation.navigate('Pair');
   };
 
-  const handleViewReceipts = () => {
-    // Navigate to the "Receipts" screen
-    navigation.navigate('Receipts');
+  // Function that produces the profile circle
+  const ProfileCircle = ({ initials }) => {
+    return (
+      <TouchableOpacity style={styles.profileCircle} onPress={navigate}>
+        <Text style={styles.initials}>{initials}</Text>
+      </TouchableOpacity>
+    );
   };
 
-  const handleExploreFeatures = () => {
-    // Navigate to the "Features" screen
-    navigation.navigate('Features');
-  };
-
-  const handleSettings = () => {
-    // Navigate to the "Settings" screen
-    navigation.navigate('Settings');
+  // Function to generate random initials
+  const generateRandomInitials = () => {
+    const letter1 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    const letter2 = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    return letter1 + letter2;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.topMenu}>
-        <TouchableOpacity style={styles.menuItem} onPress={handleLogin}>
-          <Image source={require('../assets/iconUser.png')} style={styles.icon} />
-        </TouchableOpacity>
-        <Text style={styles.menuItem}>Analytics</Text>
-      </View>
-      <TouchableOpacity style={styles.pill}>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Account</Text>
-      </TouchableOpacity>
-      <View style={styles.content}>
-        <View style={styles.box}>
-          <TouchableOpacity style={styles.button} onPress={handleViewTransactions}>
-            <Text style={styles.buttonText}>View Last Transactions</Text>
+        <ProfileCircle initials={generateRandomInitials()} />
+        <View style={styles.flexEndContainer}>
+          <TouchableOpacity style={[styles.menuItem, styles.marginRight]} onPress={navigate1}>
+            <MaterialIcons name='bar-chart' size={30} color='#333' />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleViewReceipts}>
-            <Text style={styles.buttonText}>View Receipts</Text>
+          <TouchableOpacity style={[styles.menuItem, styles.marginRight]}>
+            <MaterialIcons name='star' size={30} color='#333' />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleExploreFeatures}>
-            <Text style={styles.buttonText}>Explore Features</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={handleSettings}>
-            <Text style={styles.buttonText}>Settings</Text>
+          <TouchableOpacity style={[styles.menuItem, styles.marginRight]}>
+            <MaterialIcons name='notifications' size={30} color='#333' />
           </TouchableOpacity>
         </View>
       </View>
+      <View style={styles.content}>
+        <Text style={styles.textBox}>Text</Text>
+        <View style={styles.boxb}></View>
+        <Text style={styles.textBox}>Text</Text>
+        <View style={styles.boxw}></View>
+      </View>
 
       <View style={styles.bottomMenu}>
-        <Text style={styles.menuItem}>Home</Text>
-        <Text style={styles.menuItem}>Hub</Text>
+        <View style={styles.bottomMenuItem}>
+          <Image source={require('../assets/oneprop-icon.png')} style={styles.bottomMenuIcon} />
+          <Text style={styles.bottomMenuCaption}>Dashboard</Text>
+        </View>
+        <View style={styles.bottomMenuItem}>
+          <MaterialIcons name='person-outline' size={30} color='#73787E' style={styles.bottomMenuIcon} />
+          <Text style={styles.bottomMenuCaption}>Account</Text>
+        </View>
+        <View style={styles.bottomMenuItem}>
+          <MaterialIcons name='tune' size={30} color='#73787E' style={styles.bottomMenuIcon} />
+          <Text style={styles.bottomMenuCaption}>Settings</Text>
+        </View>
       </View>
     </View>
   );
@@ -72,10 +75,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F3F5F7',
   },
+  profileCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#778089',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  initials: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'white',
+  },
   topMenu: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 20,
     paddingTop: 40,
   },
@@ -85,10 +101,12 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
   },
-  icon: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
+  flexEndContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  marginRight: {
+    marginLeft: 20, 
   },
   content: {
     flex: 1,
@@ -96,35 +114,32 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
   },
-  pill: {
-    backgroundColor: '#FFFFFF',
-    color: '#000000',
-    margin: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    width: 120,
-    borderRadius: 20,
-  },
-  button: {
-    backgroundColor: '#0C6AEB',
-    marginVertical: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 16,
+  textBox: {
     fontWeight: 'bold',
-    textAlign: 'center',
-    color: 'white',
+    fontSize: 24,
+    alignSelf: 'flex-start',
+    marginLeft: 20,
+    margin: 10,
   },
-  box: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+  boxb: {
+    backgroundColor: '#2D64E2',
+    borderRadius: 20,
     padding: 20,
     width: '90%',
+    height: '35%',
+    shadowColor: '#000000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  boxw: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 20,
+    margin: 10,
+    width: '90%',
+    height: '35%',
     shadowColor: '#000000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
@@ -138,12 +153,23 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#DDD',
     paddingVertical: 10,
-    paddingHorizontal: 20,
     shadowColor: '#000000',
     shadowOpacity: 0.4,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
     elevation: 2,
+  },
+  bottomMenuItem: {
+    alignItems: 'center', 
+  },
+  bottomMenuIcon: {
+    width: 30,
+    height: 30,
+  },
+  bottomMenuCaption: {
+    fontSize: 12,
+    color: '#73787E',
+    marginTop: 4,
   },
 });
 
